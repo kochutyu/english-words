@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+option {
+  font-size: 15px;
+}
+
+span {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  padding: 0 10px;
+  border: none;
+  color: #fff;
+  border-bottom: 2px solid #463B47;
+  background-color: rgba($color: #000000, $alpha: 0);
+}
+
+input:focus {
+  color: #fff;
+  background-color: rgba($color: #000000, $alpha: 0);
+}
+
+input:blur::placeholder {
+  color: #fff;
+  // border: 1px solid #3B312B
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+  color: rgb(142, 139, 139);
+  background-color: #463B47;
+  border: 1px solid rgb(142, 139, 139);
+  outline: none;
+  position: relative;
+  border-radius: 5px;
+  top: 0;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:active {
+  box-shadow: 0 0 5px 1px rgb(201, 146, 206);
+  // animation: border-btn 0.1s;
+}
+
+@keyframes border-btn {
+  0% {
+    border: 1px solid rgb(142, 139, 139);
+  }
+
+  100% {
+    border: 5px solid rgb(142, 139, 139);
+  }
+}

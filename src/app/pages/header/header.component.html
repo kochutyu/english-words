@@ -1,0 +1,19 @@
+<!-- <div class="ul">
+    <li class="li" *ngFor="let item of ls.languages">
+        {{item}}
+    </li>
+</div> -->
+
+<div class="header">
+  <span>Выберите язык перевода:</span>
+  <form>
+    <select name="language" size="1">
+      <option *ngFor="let item of ls.languages">
+        {{item}}
+      </option>
+    </select>
+  </form>
+  <button (click)="alert()">CLICK</button>
+  <!-- <button (click)="aws.delete()">DELETE</button> -->
+</div>
+<textarea name="" id="" [(ngModel)]='textarea'></textarea>

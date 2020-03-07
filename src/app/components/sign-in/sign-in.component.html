@@ -1,0 +1,32 @@
+<div class="modal" #exit>
+  <div class="exit" (click)="hide()"></div>
+  <form class="form">
+    <ul class="sign-login">
+      <a href="">
+        <li>Log in</li>
+      </a>
+      <a href="">
+        <li>Sign In</li>
+      </a>
+    </ul>
+    <div class="form-modules">
+      <div class="animate">
+        <input class="input" (focus)='focus()' placeholder="First name" #firstname>
+      </div>
+      <div class="animate">
+        <input class="input" (focus)='focus()' placeholder="Last name" #lastname>
+      </div>
+      <div class="animate">
+        <input class="input" (focus)='focus()' type="email" placeholder="Email" #email>
+      </div>
+      <div class="animate">
+        <input class="input" (focus)='focus()' type="password" placeholder="Password" #password>
+        <label class="password">
+          <img src="../../../../assets/eye.png" alt="">
+          <input type="checkbox" name="" id="">
+        </label>
+      </div>
+      <button class="btn" type="reset" #btn>Register</button>
+    </div>
+  </form>
+</div>

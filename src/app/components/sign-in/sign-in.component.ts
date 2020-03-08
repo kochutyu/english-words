@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2, HostListener } from '@angular/core';
+import { Form, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -6,6 +7,8 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2, HostListener } fro
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+
+  form: FormGroup;
 
   constructor(
     private r: Renderer2,
@@ -17,13 +20,16 @@ export class SignInComponent implements OnInit {
 
   @HostListener('blur', ['$event.target']) remove(event: Event){
     // this.r.setStyle(this.exit.nativeElement, 'display', 'none')
-    alert()
   }
   
   
   ngOnInit(): void {
-    console.log(this.exit.nativeElement);
-    
+    this.form = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    });
   }
   
   
@@ -39,6 +45,11 @@ export class SignInComponent implements OnInit {
   }
 
   focus(): void{
+  }
+
+  submit(): void{
+    console.log(this.form.value);
+    
   }
 
 }

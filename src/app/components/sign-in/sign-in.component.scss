@@ -12,12 +12,15 @@
   .sign-login {
     width: 100%;
     display: flex;
-    a{
+
+    a {
       text-decoration: none;
       width: 50%;
       color: #463B47;
+      // color: #fff;
       text-align: center;
-      li{
+
+      li {
         height: 50px;
         line-height: 50px;
         list-style-type: none;
@@ -52,17 +55,38 @@
     width: 350px;
 
     .sign-login {
+      height: 50px;
       outline: 2px solid #463B47;
 
       .style-btn {}
     }
-    
+
     .form-modules {
       padding: 25px;
-      
+
       .animate {
         position: relative;
         width: 100%;
+
+        &::before{
+          content: '*';
+          color: #463B47;
+          font-size: 25px;
+          left: -5px;
+          top: 5px;
+          // background-color: red;
+          position: absolute;
+        }
+
+        .errors{
+          small{
+            font-size: 10px;
+            color: rgb(228, 96, 96);
+            opacity: 1;
+            animation: errors-opacity 1s;
+            margin-right: 5px;
+          }
+        }
 
         .input {
           padding: 0 5px;
@@ -74,14 +98,26 @@
 
           &:after {
             content: '';
-            height: 10px;
+            height: 100px;
             width: 100px;
             background-color: red;
+            position: absolute;
+          }
+
+          &.ng-invalid.ng-touched {
+            // padding-left: 15px;
+            border-bottom: 2px solid rgb(228, 96, 96);
+            animation: border-invalid 1s;
+          }
+
+          &.ng-valid {
+            border-bottom: 2px solid #463B47;
+            // animation: border-valid 1s;
           }
 
         }
 
-        &::after{
+        &::after {
           content: "";
           background-color: red;
           height: 5px;
@@ -89,7 +125,7 @@
         }
       }
 
-      .password{
+      .password {
         position: absolute;
         width: 25px;
         right: 5px;
@@ -145,3 +181,38 @@
     padding-left: 15px;
   }
 }
+
+@include keyframes(border-valid) {
+  0% {
+    // opacity: 0;
+    border-bottom: 2px solid rgb(172, 117, 117);
+  }
+
+  100% {
+    border-bottom: 2px solid #463B47;
+  }
+}
+
+@include keyframes(border-invalid) {
+  0% {
+    border-bottom: 2px solid #463B47;
+  }
+
+  100% {
+    border-bottom: 2px solid rgb(228, 96, 96);
+  }
+
+}
+
+@include keyframes(errors-opacity) {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+

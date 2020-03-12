@@ -1,0 +1,115 @@
+.modal {
+  background-color: rgba($color: #000000, $alpha: 1);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: open .5s;
+
+  .exit {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+  }
+
+
+  
+
+}
+
+.display-none {
+  display: none;
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+
+@include keyframes(focus) {
+  0% {
+    padding-left: 5px;
+    ;
+  }
+
+  100% {
+    padding-left: 15px;
+  }
+}
+
+@include keyframes(border-valid) {
+  0% {
+    // opacity: 0;
+    border-bottom: 2px solid rgb(172, 117, 117);
+  }
+
+  100% {
+    border-bottom: 2px solid #463B47;
+  }
+}
+
+@include keyframes(border-invalid) {
+  0% {
+    border-bottom: 2px solid #463B47;
+  }
+
+  100% {
+    border-bottom: 2px solid rgb(228, 96, 96);
+  }
+
+}
+
+@include keyframes(errors-opacity) {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes close {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes open {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+      display: flex;
+    }
+  }
+
+

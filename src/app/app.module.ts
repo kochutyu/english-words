@@ -12,15 +12,21 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { BtnComponent } from './components/btn/btn.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { RegistrationFormComponent } from './components/modal/registration-form/registration-form.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SignInComponent,
-    BtnComponent
+    ModalComponent,
+    RegistrationFormComponent,
+    NavbarComponent,
+    HomeComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,10 @@ export class CardComponent implements OnInit {
     public db: FireService,
   ) { }
   arr: any[] = [];
+  selectWord: IWords;
+  word: string = '';
+  transcription: string = '';
+  translate: string = '';
   ngOnInit(): void {
     this.db.getCollection('english').subscribe(arr => {
 
@@ -31,7 +35,10 @@ export class CardComponent implements OnInit {
       }).filter(item => item.id === "akcCwY55Cb6RBgYJCHfh")[0].words.
         map(item => JSON.parse(item));
 
-      console.log('lol =>',this.words);
+      this.word = this.words[1000].word;
+      this.transcription = this.words[1000].transcription;
+      this.translate = this.words[1000].translate;
+      console.log('lol =>',this.word);
 
     })
   }

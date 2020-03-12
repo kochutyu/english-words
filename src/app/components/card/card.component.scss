@@ -1,11 +1,11 @@
 .card-container {
   position: absolute;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  height: 300px;
+  height: 400px;
   perspective: 1000px;
 
   .card {
@@ -14,11 +14,17 @@
     height: inherit;
     transform-style: preserve-3d;
     transition: transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    // text-overflow: ellipsis;
+    // overflow: hidden;
     // transform: rotatey(180deg);
 
     // &:active {
     //   transform: rotateY(-180deg);
     // }
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .side {
       position: absolute;
@@ -30,20 +36,22 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      // text-overflow: ellipsis;
+      overflow: hidden;
 
       span {
         color: #fff;
       }
 
-      .word{
-          font-size: 30px;
-          color: rgb(226, 154, 86);
+      .word {
+        font-size: 30px;
+        color: rgb(226, 154, 86);
       }
 
-      .transcription{
-          .ts{
-              color: rgb(179, 216, 173);
-          }
+      .transcription {
+        .ts {
+          color: rgb(179, 216, 173);
+        }
       }
     }
 
@@ -55,9 +63,10 @@
     .back {
       transform: rotateY(180deg) translateZ(10px);
       background-color: #463B47;
-      .translate{
-          font-size: 40px;
-          color: rgb(226, 154, 86);
+
+      .translate {
+        font-size: 40px;
+        color: rgb(226, 154, 86);
       }
     }
 

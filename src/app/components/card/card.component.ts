@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
 import { IWords } from 'src/app/shared/model/words';
 import { FireService } from 'src/app/shared/services/fire.service';
+import { CardService } from 'src/app/shared/services/card.service';
 
 @Component({
   selector: 'app-card',
@@ -18,6 +19,7 @@ export class CardComponent implements OnInit {
   constructor(
     private r: Renderer2,
     public db: FireService,
+    public cs: CardService
   ) { }
   arr: any[] = [];
   selectWord: IWords;
@@ -34,10 +36,6 @@ export class CardComponent implements OnInit {
         };
       }).filter(item => item.id === "akcCwY55Cb6RBgYJCHfh")[0].words.
         map(item => JSON.parse(item));
-
-      this.word = this.words[1000].word;
-      this.transcription = this.words[1000].transcription;
-      this.translate = this.words[1000].translate;
       console.log('lol =>',this.word);
 
     })

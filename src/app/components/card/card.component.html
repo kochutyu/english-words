@@ -1,20 +1,19 @@
-<!-- <div class="position-cube">
-</div> -->
+
 <div class="card-container">
   <div class="card" (click)="rotade()" #card>
     <div class="side front">
       <span class="word">
-        {{word}}
+        {{cs.word}}
       </span>
       <span class="transcription">
         <span class="ts">[</span>
-        {{transcription}}
+        {{cs.transcription}}
         <span class="ts">]</span>
       </span>
     </div>
     <div class="side back">
       <span class="translate">
-        {{translate}}
+        {{cs.translate}}
       </span>
     </div>
     <div class="side right"></div>

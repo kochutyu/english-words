@@ -5,6 +5,8 @@ import { IWords } from 'src/app/shared/model/words';
 import { AllWordsService } from 'src/app/shared/services/all-words.service';
 import { FireService } from 'src/app/shared/services/fire.service';
 import { Observable } from 'rxjs';
+import { AppService } from 'src/app/shared/services/app.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +19,9 @@ export class HeaderComponent implements OnInit {
     public ls: LanguagesService,
     private db: AngularFirestore,
     public aws: AllWordsService,
-    public fs: FireService
+    public fs: FireService,
+    public app: AppService,
+    public modal: ModalService
     
   ) {
   }
@@ -34,8 +38,8 @@ export class HeaderComponent implements OnInit {
           id: words.payload.doc.id
         };
       });
-      
       console.log('this => ', this.arr[0].words.map(i => JSON.parse(i)));
+      
     })
   }
 
@@ -46,5 +50,14 @@ export class HeaderComponent implements OnInit {
     
     // this.aws.addWords();
     
+  }
+
+  lol(): void{
+    // this.modal.registrationFormStatus = true;
+    this.modal.modal = true;
+    this.modal.registrationFormStatus = true;
+    console.log('plll');
+    
+
   }
 }

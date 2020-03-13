@@ -24,7 +24,6 @@ export class CardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     console.log(this.words);
     
-    this.cs.randomWord(this.words);
   }
   arr: any[] = [];
   selectWord: IWords;
@@ -33,17 +32,17 @@ export class CardComponent implements OnInit, AfterViewInit {
   translate: string = '';
   ngOnInit(): void {
     this.db.getCollection('english').subscribe(arr => {
-
+      
       this.words = arr.map(words => {
         return {
           ...words.payload.doc.data(),
           id: words.payload.doc.id
         };
       }).filter(item => item.id === "akcCwY55Cb6RBgYJCHfh")[0].words.
-        map(item => JSON.parse(item));
-        console.log('lol =>',this.word);
-      })
-      this.cs.randomWord(this.words)
+      map(item => JSON.parse(item));
+      console.log('lol =>',this.word);
+      this.cs.randomWord(this.words); // ! delete after
+    })
 
   }
   rotadeStatus: boolean = false;

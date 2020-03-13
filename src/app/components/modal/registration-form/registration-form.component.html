@@ -2,59 +2,72 @@
 
   <!-- btn-change-registrationFormStatus -->
   <div class="sign-login-form">
-    <button class="btn-form rectangle btn-opacity" (click)="signIn()">Sign In</button>
-    <button class="btn-form rectangle" (click)="logIn()">Log In</button>
+    <button type="button" class="btn-form rectangle btn-opacity" (click)="signInForm()">Sign In</button>
+    <button type="button" class="btn-form rectangle" (click)="logInForm()">Log In</button>
   </div>
 
   <div class="form-modules">
 
-    <!-- <pre>{{form.get('firstName').errors | json}}</pre> -->
-
     <!-- firstName -->
     <div class="form-module" *ngIf="modal.registrationStatus">
-      <input class="input" (focus)='focus()' placeholder="First name" #firstname formControlName="firstName">
-      <!-- <pre>{{form.get('firstName').errors | json}}</pre> -->
+      <input class="input" placeholder="First name" #firstname formControlName="firstName">
 
       <!-- errors -->
       <div class="errors" *ngIf="form.get('firstName').invalid && form.get('firstName').touched">
         <small *ngIf="form.get('firstName').errors.required">Поле не може бути пустим.</small>
-        <small *ngIf="form.get('firstName').errors.checkFirstSymbol">Перша буква повинна бути з великої букви.</small>
+        <small *ngIf="form.get('firstName').errors.checkFirstSymbol && !form.get('firstName').errors.required">Перша
+          буква повинна бути з великої букви.</small>
       </div>
     </div>
     <!-- lastName -->
     <div class="form-module" *ngIf="modal.registrationStatus">
-      <input class="input" (focus)='focus()' placeholder="Last name" #lastname formControlName="lastName">
+      <input class="input" placeholder="Last name" #lastname formControlName="lastName">
 
       <!-- errors -->
       <div class="errors" *ngIf="form.get('lastName').invalid && form.get('lastName').touched">
         <small *ngIf="form.get('lastName').errors.required">Поле не може бути пустим.</small>
-        <small *ngIf="form.get('lastName').errors.checkFirstSymbol">Перша буква повинна бути з великої букви.</small>
+        <small *ngIf="form.get('lastName').errors.checkFirstSymbol && !form.get('lastName').errors.required">Перша буква
+          повинна бути з великої букви.</small>
       </div>
+    </div>
+    <div class="nav">
+      <div class="nav__lol">
+        <div class="nav__ nav__--"></div>
+        
+      </div>
+      
     </div>
 
     <!-- email -->
     <div class="form-module">
-      <input class="input" (focus)='focus()' type="email" placeholder="Email" #email formControlName="email">
+      <!-- <pre>{{form.get('email').errors | json}}</pre> -->
+      <input class="input" type="email" placeholder="Email" #email formControlName="email">
 
       <!-- errors -->
       <div class="errors" *ngIf="form.get('email').invalid && form.get('email').touched">
         <small *ngIf="form.get('email').errors.required">Поле не може бути пустим.</small>
-        <small *ngIf="form.get('email').errors.checkEmail">Введіть коректний email.</small>
+        <small *ngIf="form.get('email').errors.checkEmail && !form.get('email').errors.required">Введіть коректний
+          email.</small>
+      </div>
+      <div class="errors" *ngIf="!form.get('email').invalid">
+        <small *ngIf="userS.emailIsBusy">Email {{userS.user.email}} зайнятий.</small>
       </div>
     </div>
 
     <!-- password -->
     <div class="form-module">
-      <input class="input" (focus)='focus()' type="password" placeholder="Password" #password
-        formControlName="password">
+      <input class="input" type="password" placeholder="Password" #password formControlName="password">
 
       <!-- errors -->
       <div class="errors" *ngIf="form.get('password').invalid && form.get('password').touched">
-        <small *ngIf="form.get('password').errors.minlength">
+        <small *ngIf="form.get('password').errors.minlength"> 
           Пароль містить менше {{form.get('password').errors.minlength.requiredLength}} символів.
           Зараз к-сть символів - {{form.get('password').errors.minlength.actualLength}}
         </small>
         <small *ngIf="form.get('password').errors.required">Поле не може бути пустим.</small>
+      </div>
+      <div class="errors">
+        <small *ngIf="userS.wrongEmailOrPassword">Не вірний логін або пароль.</small>
       </div>
     </div>
 
@@ -62,7 +75,7 @@
 
     <!-- btn-submit -->
     <div class="form-btn-submit">
-      <button class="btn-form" type="submit" [disabled]='form.invalid' *ngIf="!modal.registrationStatus; else login"
+      <button class="btn-form" type="submit" [disabled]='form.invalid' *ngIf="modal.registrationStatus; else login"
         #register>Register</button>
 
       <ng-template #login>

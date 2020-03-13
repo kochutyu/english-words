@@ -10,6 +10,7 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 export class ModalComponent implements OnInit {
 
   @ViewChild('exit', { static: true }) exit: ElementRef; // close modal
+  @ViewChild('hideModal', { static: true }) hideModal: ElementRef; // close modal
 
   constructor(
     private r: Renderer2,
@@ -21,6 +22,8 @@ export class ModalComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.modal.hideModal = this.hideModal;
+    
   }
   lol: any;
   hide(): void {

@@ -11,25 +11,15 @@ export class FireService {
     private fs: AngularFirestore
   ) { }
 
-  getCollection(collection: string): any {
+  getCollection(collection: string): Observable<any[]> {
     return this.fs.collection(`${collection}`).snapshotChanges();
   }
 
-  deleteDocID(work?: any, collection?: string) {
-    this.fs.doc(`english}/${this.getCollection[0].id}`).delete();
+  deleteItem(collection?: string, work?: object): void {
+    this.fs.doc(`${collection}/${work}.id`).delete();
   }
 
-  getSubscribe(collection: string, getInfo?: any[]): Observable<any> {
-    let arr: any[] = [];
-    return this.getCollection(`${collection}`).subscribe(actionArray => {
-      getInfo = actionArray.map(words => {
-        return {
-          ...words.payload.doc.data(),
-          id: words.payload.doc.id
-        };
-      });
-      if(getInfo) console.log(getInfo);
-    });
-  }
+
+
 
 }

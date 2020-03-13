@@ -46,10 +46,11 @@ export class MyValidators {
         const hasLowercaseLetter = /[a-z]/.test(value);
         /** Проверка на минимальную длину пароля */
         const isLengthValid = value ? value.length > 7 : false;
-
+        
         /** Общая проверка */
         const passwordValid = hasNumber && hasCapitalLetter && hasLowercaseLetter && isLengthValid;
-
+        console.log('kik');
+        
         if (!passwordValid) {
             return { invalidPassword: 'Пароль не прошел валидацию' };
         }

@@ -1,15 +1,30 @@
 .nav {
   display: flex;
   align-items: center;
+  // flex-direction: row-reverse;
   height: 70px;
   background-color: #463B47;
+  padding: 0 50px;
+  position: relative;
+
+  .logo{
+    .user{
+      color: rgb(181, 115, 115);
+      user-select: none;
+    }
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+  }
 
   .ul {
-    width: 100%;
+    position: absolute;
+    right: 50px;
+    width: 290px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 0 50px;
+    // padding: 0 50px;
 
     li {
       list-style-type: none;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, Input, AfterViewInit } from '@angular/core';
 import { IWords } from 'src/app/shared/model/words';
 import { FireService } from 'src/app/shared/services/fire.service';
 import { CardService } from 'src/app/shared/services/card.service';
@@ -8,7 +8,7 @@ import { CardService } from 'src/app/shared/services/card.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit, AfterViewInit {
 
   // words: IWords[] = [];
 
@@ -21,6 +21,11 @@ export class CardComponent implements OnInit {
     public db: FireService,
     public cs: CardService
   ) { }
+  ngAfterViewInit(): void {
+    console.log(this.words);
+    
+    this.cs.randomWord(this.words);
+  }
   arr: any[] = [];
   selectWord: IWords;
   word: string = '';
@@ -36,9 +41,10 @@ export class CardComponent implements OnInit {
         };
       }).filter(item => item.id === "akcCwY55Cb6RBgYJCHfh")[0].words.
         map(item => JSON.parse(item));
-      console.log('lol =>',this.word);
+        console.log('lol =>',this.word);
+      })
+      this.cs.randomWord(this.words)
 
-    })
   }
   rotadeStatus: boolean = false;
   rotade(): void {

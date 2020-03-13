@@ -1,5 +1,6 @@
 <nav class="nav">
-  <div class="logo" *ngIf="userS.loginStatus">{{userS.user.firstName}} - {{userS.user.lastName}}</div>
+  <!-- <div class="logo" *ngIf="userS.loginStatus">{{userS.user.firstName}} - {{userS.user.lastName}}</div> -->
+  <div class="logo" *ngIf="userS.loginStatus"> <span class="user">User: </span>{{userS.user.lastName}} {{userS.user.firstName}}</div>
   <ul class="ul">
     <li>
       <button class="btn-form rectangle sign" (click)="signIn()">Sign In</button>

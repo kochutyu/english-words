@@ -41,7 +41,7 @@
     <!-- email -->
     <div class="form-module">
       <!-- <pre>{{form.get('email').errors | json}}</pre> -->
-      <input class="input" type="email" placeholder="Email" #email formControlName="email">
+      <input class="input" type="email" placeholder="Email" #email formControlName="email" autocomplete="off">
 
       <!-- errors -->
       <div class="errors" *ngIf="form.get('email').invalid && form.get('email').touched">
@@ -56,7 +56,8 @@
 
     <!-- password -->
     <div class="form-module">
-      <input class="input" type="password" placeholder="Password" #password formControlName="password">
+      <input class="input" type="password" placeholder="Password" #password formControlName="password"
+        autocomplete="false">
 
       <!-- errors -->
       <div class="errors" *ngIf="form.get('password').invalid && form.get('password').touched">

@@ -14,13 +14,6 @@
     height: inherit;
     transform-style: preserve-3d;
     transition: transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    // text-overflow: ellipsis;
-    // overflow: hidden;
-    // transform: rotatey(180deg);
-
-    // &:active {
-    //   transform: rotateY(-180deg);
-    // }
 
     &:hover {
       cursor: pointer;
@@ -66,7 +59,7 @@
       background-color: #463B47;
 
       .translate {
-        font-size: 40px;
+        font-size: 30px;
         color: rgb(226, 154, 86);
       }
     }

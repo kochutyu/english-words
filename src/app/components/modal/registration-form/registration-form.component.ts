@@ -86,8 +86,8 @@ export class RegistrationFormComponent implements OnInit, OnDestroy, AfterViewIn
 
      logInFormGroup(): void {
           this.form = new FormGroup({
-               email: new FormControl('', [Validators.required, MyValidators.checkEmail]),
-               password: new FormControl('', [Validators.required, Validators.minLength(6)])
+               nickName: new FormControl('', [Validators.required]),
+               password: new FormControl('', [Validators.required])
           });
      }
 
@@ -97,9 +97,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy, AfterViewIn
 
      signInFormGroup(): void {
           this.form = new FormGroup({
-               firstName: new FormControl('', [Validators.required, MyValidators.checkFirstSymbol]),
-               lastName: new FormControl('', [Validators.required, MyValidators.checkFirstSymbol]),
-               email: new FormControl('', [Validators.required, MyValidators.checkEmail]),
+               nickName: new FormControl('', [Validators.required, Validators.minLength(3)]),
                password: new FormControl('', [Validators.required, Validators.minLength(6)]),
           });
      }
@@ -110,49 +108,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy, AfterViewIn
 
      signInForm(): void {
 
-          function locking() {
-
-               let count = 1;
-               let bracketsConfig = [['lol', 'google'], ['facebook', 'index'], ['angular']];
-               let str = "lolgoogle. Вот вийшло замінити";
-               
-               function restart() {
-
-                    const newArr = bracketsConfig.map(item => item.join('')).forEach(item => {
-                         
-                         if (str.includes(item)) {
-                              str = str.replace(item, '');
-                              restart()
-                              
-                         }
-                         return null
-                    });
-               }
-
-               restart() 
-               
-               
-               console.log(str);
-
-
-
-
-               return function restart() {
-                    exitFromCycle: for (let index = 0; index < 5; index++) {
-                         count += 1;
-                         const lastIndex = 4
-                         console.log(count);
-
-                         if (count === 100) break exitFromCycle
-                         if (index === lastIndex) restart()
-                    }
-               }
-
-          }
-
-          const restart = locking();
-
-
           this.modal.registrationStatus = true;
           this.signInFormGroup();
      }
@@ -162,6 +117,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy, AfterViewIn
 
 
      logInForm(): void {
+
           this.modal.registrationStatus = false;
           this.logInFormGroup();
      }
@@ -171,11 +127,10 @@ export class RegistrationFormComponent implements OnInit, OnDestroy, AfterViewIn
 
 
      newUser(): IUser {
-          const firstName = this.form.get('firstName').value;
-          const lastName = this.form.get('lastName').value;
-          const email = this.form.get('email').value;
+
+          const nickName = this.form.get('nickName').value;
           const password = this.form.get('password').value;
-          const user = new IUser(firstName, lastName, email, password);
+          const user = new IUser(nickName, password);
           this.userS.user = JSON.parse(JSON.stringify(user));
           return this.userS.user;
      }
@@ -185,13 +140,13 @@ export class RegistrationFormComponent implements OnInit, OnDestroy, AfterViewIn
 
 
      register(): void {
-          this.userS.wrongEmailOrPassword = false;
+          this.userS.wrongNickNameOrPassword = false;
 
-          const emailIsBusy: boolean = this.users.some(item => item.email === this.form.get('email').value);
+          const nickNameIsBusy: boolean = this.users.some(item => item.nickName === this.form.get('nickName').value);
+          
+          if (!nickNameIsBusy) {
 
-          if (!emailIsBusy) {
-
-               this.userS.emailIsBusy = false;
+               this.userS.nickNameIsBusy = false;
                this.fs.collection('users').add(this.newUser());
                this.userS.loginStatus = true;
                this.modal.hideModal.nativeElement.click();
@@ -199,30 +154,33 @@ export class RegistrationFormComponent implements OnInit, OnDestroy, AfterViewIn
           } else {
 
                this.newUser();
-               this.userS.emailIsBusy = true;
+               this.userS.nickNameIsBusy = true;
           }
      }
+
+
+     
 
 
 
 
 
      enter(): void {
-          this.userS.emailIsBusy = false;
+          this.userS.nickNameIsBusy = false;
 
-          const email = this.form.get('email').value;
+          const nickName = this.form.get('nickName').value;
           const password = this.form.get('password').value;
-          const user: IUser[] = this.users.filter(userItem => userItem.email === email && userItem.password === password);
+          const user: IUser[] = this.users.filter(userItem => userItem.nickName === nickName && userItem.password === password);
 
           if (user[0]) {
 
                this.userS.user = user[0];
                this.userS.loginStatus = true;
                this.modal.hideModal.nativeElement.click();
-               this.userS.wrongEmailOrPassword = false;
+               this.userS.wrongNickNameOrPassword = false;
           } else {
 
-               this.userS.wrongEmailOrPassword = true;
+               this.userS.wrongNickNameOrPassword = true;
           }
      }
 

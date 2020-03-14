@@ -6,8 +6,8 @@ import { IUser } from '../model/user.model';
 })
 export class UsersService {
   loginStatus: boolean = false;
-  emailIsBusy: boolean = false;
-  wrongEmailOrPassword: boolean = false;
+  nickNameIsBusy: boolean = false;
+  wrongNickNameOrPassword: boolean = false;
   user: IUser;
   users: IUser[] = [];
 

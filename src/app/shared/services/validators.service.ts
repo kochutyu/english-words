@@ -38,8 +38,6 @@ export class ValidatorsService {
   public validEmail(control: FormControl): ValidationErrors {
     const value = control.value;
     const email = new RegExp('^[-._a-z0-9]+@([a-z0-9]+\\.)+[a-z]{2,6}$');
-    // const emailIsBusy = this.lol.some( item => item.email.includes(value) );
-    // console.log(`${value} is busy: `, emailIsBusy);
     
     const validEmail = email.test(control.value);
     if (!validEmail) {

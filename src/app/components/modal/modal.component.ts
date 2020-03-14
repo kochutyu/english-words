@@ -37,7 +37,7 @@ export class ModalComponent implements OnInit {
     setTimeout(() => {
       this.r.setStyle(this.exit.nativeElement, 'display', 'none')
       this.modal.modal = false;
-    }, 300);
+    }, 470);
 
   }
 

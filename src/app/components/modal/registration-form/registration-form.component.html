@@ -2,8 +2,11 @@
 
   <!-- btn-change-registrationFormStatus -->
   <div class="sign-login-form">
-    <button type="button" class="btn-form rectangle btn-opacity" (click)="signInForm()">Sign In</button>
-    <button type="button" class="btn-form rectangle" (click)="logInForm()">Log In</button>
+    <button type="button" class="btn-form rectangle btn-opacity" (click)="signInForm()"
+      [routerLink]="['/home', 'sign-up']" routerLinkActive="active-modal-form">Sign In</button>
+    <button type="button" class="btn-form rectangle" (click)="logInForm()" [routerLink]="['/home', 'log-in']"
+      routerLinkActive="active-modal-form">Log
+      In</button>
   </div>
 
   <div class="form-modules">

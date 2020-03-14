@@ -38,6 +38,9 @@ input:focus {
   background-color: rgba($color: #000000, $alpha: 0);
 }
 
+input::placeholder{
+  user-select: none;
+}
 input:blur::placeholder {
   color: #fff;
   user-select: none;
@@ -144,4 +147,8 @@ input:-webkit-autofill {
   &:hover {
     transform: scale(0.9);
   }
+}
+
+.active-modal-form{
+  color: #fff;
 }

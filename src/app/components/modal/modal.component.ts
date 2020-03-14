@@ -28,7 +28,9 @@ export class ModalComponent implements OnInit {
     
   }
   lol: any;
-  hide(): void {
+
+  closeModal(): void {
+    this.r.setStyle(this.hideModal.nativeElement, 'display', 'none');
     this.r.setStyle(this.exit.nativeElement, 'animation-name', 'close')
     this.r.setStyle(this.exit.nativeElement, 'animation-duration', '0.5s')
     this.location.back()

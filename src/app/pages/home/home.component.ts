@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FireService } from 'src/app/shared/services/fire.service';
 import { IWords } from 'src/app/shared/model/words';
 import { CardService } from 'src/app/shared/services/card.service';
+import { UsersService } from 'src/app/shared/services/users.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,28 +12,24 @@ import { CardService } from 'src/app/shared/services/card.service';
 })
 export class HomeComponent implements OnInit {
   words: IWords[] = [];
+  subcsribe$: Subscription;
   constructor(
     public db: FireService,
-    private cs: CardService
+    private cardS: CardService,
+    private userS: UsersService
   ) { }
 
   ngOnInit(): void {
-    this.db.getCollection('english').subscribe(arr => {
 
-      this.words = arr.map(words => {
-        return {
-          ...words.payload.doc.data(),
-          id: words.payload.doc.id
-        };
-      }).filter(item => item.id === "akcCwY55Cb6RBgYJCHfh")[0].words.
-        map(item => JSON.parse(item));
-      console.log('lol ddd=>', this.words);
-
-    })
   }
 
   change(): void {
-    this.cs.randomWord(this.words)
+    if (sessionStorage.getItem('words')) {
+      const words: IWords[] = JSON.parse(sessionStorage.getItem('words'))
+      this.cardS.randomWord(words);
+    }
   }
 
 }
+
+

@@ -29,7 +29,7 @@
         autocomplete="false">
       <!-- ! errors -->
       <div class="errors" *ngIf="form.get('password').invalid && form.get('password').touched">
-        <small *ngIf="form.get('password').errors.minlength"> 
+        <small *ngIf="form.get('password').errors.minlength">
           Пароль містить менше {{form.get('password').errors.minlength.requiredLength}} символів.
           Зараз к-сть символів - {{form.get('password').errors.minlength.actualLength}}
         </small>

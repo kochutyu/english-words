@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { AppService } from 'src/app/shared/services/app.service';
 import { ModalService } from 'src/app/shared/services/modal.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
@@ -16,7 +17,8 @@ export class ModalComponent implements OnInit {
     private r: Renderer2,
     private el: ElementRef,
     public app: AppService,
-    public modal: ModalService
+    public modal: ModalService,
+    private location: Location
   ) { }
 
 
@@ -29,11 +31,12 @@ export class ModalComponent implements OnInit {
   hide(): void {
     this.r.setStyle(this.exit.nativeElement, 'animation-name', 'close')
     this.r.setStyle(this.exit.nativeElement, 'animation-duration', '0.5s')
-    
+    this.location.back()
     setTimeout(() => {
       this.r.setStyle(this.exit.nativeElement, 'display', 'none')
       this.modal.modal = false;
     }, 300);
+
   }
 
 }

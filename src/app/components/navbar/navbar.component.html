@@ -2,11 +2,11 @@
   <div class="logo" *ngIf="userS.loginStatus"> <span class="user">User: </span>{{userS.user.nickName}}</div>
   <ul class="ul">
     <li>
-      <button class="btn-form rectangle sign" (click)="signIn()">Sign In</button>
+      <button class="btn-form rectangle sign" (click)="signIn()" [routerLink]="['/home', 'sign-up']">Sign In</button>
     </li>
 
     <li>
-      <button class="btn-form rectangle login" (click)="lognIn()">Log In</button>
+      <button class="btn-form rectangle login" (click)="lognIn()" [routerLink]="['/home', 'log-in']">Log In</button>
     </li>
   </ul>
 </nav>

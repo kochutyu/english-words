@@ -22,6 +22,5 @@ export class CardService {
     this.translate = this.selectWord.translate;
     console.log(this.selectWord);
     
-    // return  this.selectWord
   }
 }

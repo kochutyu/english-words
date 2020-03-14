@@ -1,4 +1,4 @@
 <div class="modal" #exit>
   <div class="exit" (click)="hide()" #hideModal></div>
-  <app-registration-form *ngIf="modal.registrationFormStatus"></app-registration-form>
+  <ng-content></ng-content>
 </div>

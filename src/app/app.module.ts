@@ -17,6 +17,7 @@ import { RegistrationFormComponent } from './components/modal/registration-form/
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardComponent } from './components/card/card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CardComponent } from './components/card/card.component';
     RegistrationFormComponent,
     NavbarComponent,
     HomeComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import { CardComponent } from './components/card/card.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

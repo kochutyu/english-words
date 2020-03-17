@@ -67,74 +67,19 @@ input:-webkit-autofill {
   -o-text-fill-color: #fff;
 }
 
-.btn-form {
-  width: 100%;
+.btn {
+  min-width: 70px;
   height: 50px;
   color: rgb(142, 139, 139);
   background-color: #463B47;
-  border: 1px solid rgb(142, 139, 139);
   outline: none;
   position: relative;
   border-radius: 5px;
-  top: 0;
   user-select: none;
-}
-
-.btn-form:hover {
-  cursor: pointer;
-}
-
-.btn-form:active {
-  box-shadow: 0 0 5px 1px rgb(201, 146, 206);
-  // animation: border-btn 0.1s;
-}
-
-.btn-form:disabled {
-  cursor: no-drop;
-}
-
-// .btn:disabled:hover:after{
-//   content: '';
-//   height: 50px;
-//   width: 20px;
-//   background-color: red;
-//   position: absolute;
-//   top: -1px;
-//   right: 0;
-//   border-right: 1px green($color:  #fff);
-// }
-
-.btn {
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding: 12.5px 20px;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-
-@keyframes border-btn-form {
-  0% {
-    border: 1px solid rgb(142, 139, 139);
-  }
-
-  100% {
-    border: 5px solid rgb(142, 139, 139);
-  }
-}
-
-.modal-link-active {
-  background-color: #463B47;
-}
-
-.modal-link-active li {
-  color: #fff;
-}
-
-.rectangle {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0;
   border: none;
   transition: transform 0.3s;
@@ -146,7 +91,24 @@ input:-webkit-autofill {
 
   &:hover {
     transform: scale(0.9);
+    cursor: pointer;
   }
+  
+  &:active {
+    box-shadow: 0 0 5px 1px rgb(201, 146, 206);
+  }
+  
+  &:disabled {
+    cursor: no-drop;
+  }
+}
+
+.modal-link-active {
+  background-color: #463B47;
+}
+
+.modal-link-active li {
+  color: #fff;
 }
 
 .active-modal-form{

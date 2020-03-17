@@ -18,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardComponent } from './components/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropDownMenuComponent } from './components/drop-down-menu/drop-down-menu.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     HomeComponent,
     CardComponent,
+    DropDownMenuComponent,
   ],
   imports: [
     BrowserModule,

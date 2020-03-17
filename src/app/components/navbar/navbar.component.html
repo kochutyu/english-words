@@ -1,12 +1,24 @@
 <nav class="nav">
-  <div class="logo" *ngIf="userS.loginStatus"> <span class="user">User: </span>{{userS.user.nickName}}</div>
-  <ul class="ul">
+  <button class="settings" *ngIf="userS.loginStatus"><img src="../../../assets/settings.png" alt=""></button>
+
+  <ul class="ul" *ngIf="!userS.loginStatus">
     <li>
-      <button class="btn-form rectangle sign" (click)="signIn()" [routerLink]="['/home', 'sign-up']">Sign In</button>
+      <button class="btn sign" (click)="signIn()" [routerLink]="['/home', 'sign-up']">Sign In</button>
     </li>
 
     <li>
-      <button class="btn-form rectangle login" (click)="lognIn()" [routerLink]="['/home', 'log-in']">Log In</button>
+      <button class="btn login" (click)="lognIn()" [routerLink]="['/home', 'log-in']">Log In</button>
     </li>
   </ul>
+
+
+  <div class="logo" *ngIf="userS.loginStatus">
+    <div class="about-user">
+      <span class="user">User: </span>{{userS.user.nickName}}
+    </div>
+    <!-- <div class="btn btn-border">Log Out</div> -->
+  </div>
+  <div class="menu">
+    <app-drop-down-menu></app-drop-down-menu>
+  </div>
 </nav>

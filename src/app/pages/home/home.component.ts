@@ -16,11 +16,10 @@ export class HomeComponent implements OnInit {
   constructor(
     public db: FireService,
     private cardS: CardService,
-    private userS: UsersService
+    public userS: UsersService
   ) { }
 
   ngOnInit(): void {
-
   }
 
   change(): void {

@@ -1,5 +1,5 @@
 <nav class="nav">
-  <button class="settings" (click)="menu.toggle()" *ngIf="userS.loginStatus" (click)="menu.onRotadeSettings()"><img
+  <button class="settings" (click)="menu.toggle()" *ngIf="userS.loginStatus"><img
       src="../../../assets/settings.png" alt="" [@settings]="menu.rotadeSettings"></button>
 
   <ul class="ul" *ngIf="!userS.loginStatus">

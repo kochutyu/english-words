@@ -17,7 +17,7 @@ export class DropDownMenuService {
   }
 
   toggle(): void {
-    // this.onRotadeSettings();
+    this.onRotadeSettings();
     this.openStatusMenu = !this.openStatusMenu;
     this.menuState = this.menuState === 'end' ? 'start' : 'end';
   }

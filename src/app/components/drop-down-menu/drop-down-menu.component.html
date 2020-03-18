@@ -1,17 +1,17 @@
-<div class="drop-container">
+<div class="drop-container" [@menu-ul]="menu.menuState">
   <ul class="drop-menu">
-    <li class="li-progress btn"> <span class="progress">Progress:</span>
+    <li class="li-progress btn li-1" [@li-1]="menu.menuState" (click)="menu.toggle()"> <span
+        class="progress">Progress:</span>
       <div class="line-progress">
         <div class="line-progress-active"></div>
         <div class="percent">
-            100%
+          100%
         </div>
       </div>
     </li>
-    <li class="btn">Repeat words</li>
-    <li class="btn">Not learned words</li>
-    <li class="btn">Log Out</li>
+    <li class="btn li-2" [@li-2]="menu.menuState">Learn New Words</li>
+    <li class="btn li-3" [@li-3]="menu.menuState">Not Learned Words</li>
+    <li class="btn li-4" [@li-4]="menu.menuState">Repeat Words</li>
+    <li class="btn li-5" [@li-5]="menu.menuState"> <span class="log-out">Log Out</span> </li>
   </ul>
 </div>
-
-<button class="btn">Toggle</button>

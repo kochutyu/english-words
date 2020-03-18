@@ -1,6 +1,6 @@
 <nav class="nav">
-  <button class="settings" (click)="menu.openStatusMenu = !menu.openStatusMenu" *ngIf="userS.loginStatus"><img
-      src="../../../assets/settings.png" alt=""></button>
+  <button class="settings" (click)="menu.toggle()" *ngIf="userS.loginStatus" (click)="menu.onRotadeSettings()"><img
+      src="../../../assets/settings.png" alt="" [@settings]="menu.rotadeSettings"></button>
 
   <ul class="ul" *ngIf="!userS.loginStatus">
     <li>
@@ -17,9 +17,9 @@
     <div class="about-user">
       <span class="user">User: </span>{{userS.user.nickName}}
     </div>
-    <!-- <div class="btn btn-border">Log Out</div> -->
+    
   </div>
-  <div class="menu" *ngIf="menu.openStatusMenu">
+  <div class="menu" *ngIf="userS.loginStatus">
     <app-drop-down-menu></app-drop-down-menu>
   </div>
 </nav>

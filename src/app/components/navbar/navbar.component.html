@@ -1,5 +1,6 @@
 <nav class="nav">
-  <button class="settings" *ngIf="userS.loginStatus"><img src="../../../assets/settings.png" alt=""></button>
+  <button class="settings" (click)="menu.openStatusMenu = !menu.openStatusMenu" *ngIf="userS.loginStatus"><img
+      src="../../../assets/settings.png" alt=""></button>
 
   <ul class="ul" *ngIf="!userS.loginStatus">
     <li>
@@ -18,7 +19,7 @@
     </div>
     <!-- <div class="btn btn-border">Log Out</div> -->
   </div>
-  <div class="menu">
+  <div class="menu" *ngIf="menu.openStatusMenu">
     <app-drop-down-menu></app-drop-down-menu>
   </div>
 </nav>

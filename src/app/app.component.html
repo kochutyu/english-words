@@ -1,12 +1,10 @@
-<app-modal *ngIf="modal.modal">
-  <app-registration-form *ngIf="modal.registrationFormStatus"></app-registration-form>
-</app-modal>
+<app-modal *ngIf="modal.modal"></app-modal>
 
 <div class="content">
   <header>
     <app-navbar></app-navbar>
   </header>
-  <main>
+  <main class="main">
     <router-outlet></router-outlet>
   </main>
 </div>

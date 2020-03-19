@@ -1,0 +1,17 @@
+.card-block {
+  width: 100%;
+  background-color: red;
+
+  .word {
+    margin: 50px 0;
+  }
+
+  .changeWord {
+    margin-bottom: 20px;
+  }
+
+  button {
+    z-index: 1;
+    width: 100%;
+  }
+}

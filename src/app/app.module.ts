@@ -19,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CardComponent } from './components/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropDownMenuComponent } from './components/drop-down-menu/drop-down-menu.component';
+import { LearnNewWordsComponent } from './pages/learn-new-words/learn-new-words.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DropDownMenuComponent } from './components/drop-down-menu/drop-down-men
     HomeComponent,
     CardComponent,
     DropDownMenuComponent,
+    LearnNewWordsComponent,
   ],
   imports: [
     BrowserModule,

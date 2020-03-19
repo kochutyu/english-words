@@ -9,6 +9,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { Observable, Subscription } from 'rxjs';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
 import { IWords } from 'src/app/shared/model/words';
+import { Router } from '@angular/router';
 
 @Component({
      selector: 'app-registration-form',
@@ -30,7 +31,8 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
           private fs: AngularFirestore,
           public userS: UsersService,
           public validatorS: ValidatorsService,
-          private db: FireService
+          private db: FireService,
+          private router: Router
      ) { }
 
 
@@ -184,6 +186,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
                this.userS.loginStatus = true;
                this.modal.hideModal.nativeElement.click();
                this.userS.wrongNickNameOrPassword = false;
+               this.router.navigate(['/learn-new-words']);
           } else {
 
                this.userS.wrongNickNameOrPassword = true;

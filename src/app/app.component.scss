@@ -1,12 +1,12 @@
-.main {
-  height: calc(100vh - 70px);
+.content {
+    height: 100vh;
   background-image: url(../assets/mind.jpg);
   background-blend-mode: multiply;
-  background-color: #463B47;
+  background-color: rgb(59, 71, 71);
   background-size: 100% 100%;
   background-position: center;
 
-  .router-outlet {
+  .main {
     height: calc(100vh - 120px);
     display: flex;
     justify-content: center;

@@ -1,8 +1,7 @@
 <nav class="nav">
 
   <div class="nav-block">
-    <button class="settings" (click)="menu.toggle()" *ngIf="userS.loginStatus"><img src="../../../assets/settings.png"
-        alt="" [@settings]="menu.rotadeSettings"></button>
+    <button class="settings" (click)="menu.toggle()" *ngIf="userS.loginStatus" [@settings]="menu.rotadeSettings"></button>
 
     <ul class="ul" *ngIf="!userS.loginStatus">
       <li>

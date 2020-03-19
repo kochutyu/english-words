@@ -12,6 +12,6 @@
     <li class="btn li-2" [@li-2]="menu.menuState">Learn New Words</li>
     <li class="btn li-3" [@li-3]="menu.menuState">Not Learned Words</li>
     <li class="btn li-4" [@li-4]="menu.menuState">Repeat Words</li>
-    <li class="btn li-5" [@li-5]="menu.menuState"> <span class="log-out">Log Out</span> </li>
+    <li class="btn li-5" [@li-5]="menu.menuState" (click)="menu.logOut()"> <span class="log-out">Log Out</span> </li>
   </ul>
 </div>

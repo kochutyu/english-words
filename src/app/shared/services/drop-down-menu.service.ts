@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,11 @@ export class DropDownMenuService {
   openStatusMenu: boolean = false;
   menuState: string = 'end'
   rotadeSettings: string = 'click-active'
-  
-  constructor() { }
-  
+
+  constructor(
+    private user: UsersService
+  ) { }
+
   ngOnInit(): void {
   }
   onRotadeSettings(): void {
@@ -20,5 +23,11 @@ export class DropDownMenuService {
     this.onRotadeSettings();
     this.openStatusMenu = !this.openStatusMenu;
     this.menuState = this.menuState === 'end' ? 'start' : 'end';
+  }
+
+  logOut(): void {
+    delete this.user.user;
+    this.user.loginStatus = false;
+    this.toggle();
   }
 }

@@ -1,24 +1,28 @@
 <nav class="nav">
-  <button class="settings" (click)="menu.toggle()" *ngIf="userS.loginStatus"><img
-      src="../../../assets/settings.png" alt="" [@settings]="menu.rotadeSettings"></button>
 
-  <ul class="ul" *ngIf="!userS.loginStatus">
-    <li>
-      <button class="btn sign" (click)="signIn()" [routerLink]="['/home', 'sign-up']">Sign In</button>
-    </li>
+  <div class="nav-block">
+    <button class="settings" (click)="menu.toggle()" *ngIf="userS.loginStatus"><img src="../../../assets/settings.png"
+        alt="" [@settings]="menu.rotadeSettings"></button>
 
-    <li>
-      <button class="btn login" (click)="lognIn()" [routerLink]="['/home', 'log-in']">Log In</button>
-    </li>
-  </ul>
+    <ul class="ul" *ngIf="!userS.loginStatus">
+      <li>
+        <button class="btn sign" (click)="signIn()" [routerLink]="['/home', 'sign-up']">Sign In</button>
+      </li>
+
+      <li>
+        <button class="btn login" (click)="lognIn()" [routerLink]="['/home', 'log-in']">Log In</button>
+      </li>
+    </ul>
 
 
-  <div class="logo" *ngIf="userS.loginStatus">
-    <div class="about-user">
-      <span class="user">User: </span>{{userS.user.nickName}}
+    <div class="logo" *ngIf="userS.loginStatus">
+      <div class="about-user">
+        <span class="user">User: </span>{{userS.user.nickName}}
+      </div>
+
     </div>
-    
   </div>
+  
   <div class="menu" *ngIf="userS.loginStatus">
     <app-drop-down-menu></app-drop-down-menu>
   </div>

@@ -1,4 +1,6 @@
-<app-modal *ngIf="modal.modal"></app-modal>
+<app-modal *ngIf="modal.modal">
+  <app-registration-form *ngIf="modal.registrationFormStatus"></app-registration-form>
+</app-modal>
 
 <div class="content">
   <header>

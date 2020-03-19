@@ -4,6 +4,7 @@ import { IWords } from 'src/app/shared/model/words';
 import { CardService } from 'src/app/shared/services/card.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { Subscription } from 'rxjs';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
   constructor(
     public db: FireService,
     private cardS: CardService,
-    public userS: UsersService
+    public userS: UsersService,
+    public modal: ModalService
   ) { }
 
   ngOnInit(): void {

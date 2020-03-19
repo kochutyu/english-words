@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UsersService } from './users.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class DropDownMenuService {
   rotadeSettings: string = 'click-active'
 
   constructor(
-    private user: UsersService
+    private user: UsersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class DropDownMenuService {
   logOut(): void {
     delete this.user.user;
     this.user.loginStatus = false;
+    this.router.navigate(['/home']);
     this.toggle();
   }
 }

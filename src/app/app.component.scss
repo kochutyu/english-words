@@ -1,5 +1,5 @@
 .content {
-    height: 100vh;
+  min-height: 100vh;
   background-image: url(../assets/mind.jpg);
   background-blend-mode: multiply;
   background-color: rgb(59, 71, 71);
@@ -7,9 +7,12 @@
   background-position: center;
 
   .main {
-    height: calc(100vh - 120px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    .router-outlet {
+      height: calc(100vh - 120px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

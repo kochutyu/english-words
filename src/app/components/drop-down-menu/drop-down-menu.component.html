@@ -9,9 +9,23 @@
         </div>
       </div>
     </li>
-    <li class="btn li-2" [@li-2]="menu.menuState">Learn New Words</li>
-    <li class="btn li-3" [@li-3]="menu.menuState">Not Learned Words</li>
-    <li class="btn li-4" [@li-4]="menu.menuState">Repeat Words</li>
+    <li class="btn li-2" [@li-2]="menu.menuState" 
+                        [routerLink]="['/learn-new-words']" 
+                        routerLinkActive="active"
+                        (click)="menu.toggle()"
+                        >Learn New Words</li>
+
+    <li class="btn li-3" [@li-3]="menu.menuState" 
+                        [routerLink]="['/learned-words']" 
+                        routerLinkActive="active"
+                        (click)="menu.toggle()"
+                        >Not Learned Words</li>
+
+    <li class="btn li-4" [@li-4]="menu.menuState"
+                        [routerLink]="['/repeat-words']"
+                        routerLinkActive="active"
+                        (click)="menu.toggle()"
+                        >Repeat Words</li>
     <li class="btn li-5" [@li-5]="menu.menuState" (click)="menu.logOut()"> <span class="log-out">Log Out</span> </li>
   </ul>
 </div>

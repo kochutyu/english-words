@@ -99,6 +99,7 @@ export class DropDownMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
 }

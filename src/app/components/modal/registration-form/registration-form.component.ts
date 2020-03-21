@@ -145,7 +145,9 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
      newUser(): IUser {
           const nickName = this.form.get('nickName').value;
           const password = this.form.get('password').value;
-          const user = new IUser(nickName, password);
+          const learnedWords: string[] = [];
+          const notLearnedWords: string[] = [];
+          const user = new IUser(nickName, password, learnedWords, notLearnedWords);
           this.userS.user = JSON.parse(JSON.stringify(user));
           return this.userS.user;
      }
@@ -187,6 +189,8 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
                this.modal.hideModal.nativeElement.click();
                this.userS.wrongNickNameOrPassword = false;
                this.router.navigate(['/learn-new-words']);
+               console.log(user[0]);
+               
           } else {
 
                this.userS.wrongNickNameOrPassword = true;

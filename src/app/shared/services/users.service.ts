@@ -13,13 +13,14 @@ export class UsersService {
   user: IUser;
   users: IUser[] = [];
 
+  learnedWords: number;
   constructor(
     private fs: AngularFirestore
-  ) { 
+  ) {
     this.users = []
   }
 
-  getNewDataAboutWordsInfo(user: IUser, randomWord: IWords, arrPush: any[]): void { 
+  getNewDataAboutWordsInfo(user: IUser, randomWord: IWords, arrPush: any[]): void {
     const id = user.id;
     const nickName = user.nickName;
     const password = user.password;
@@ -32,4 +33,14 @@ export class UsersService {
     this.fs.doc(`users/${id}`).delete();
     this.fs.collection('users').add(JSON.parse(JSON.stringify(user)));
   }
+
+  getProgressLearnewWords(): number {
+    if (sessionStorage.getItem('words')) {
+      const words: IWords[] = JSON.parse(sessionStorage.getItem('words'));
+      let percent = this.user.learnedWords.length * 100 / words.length;
+      return percent
+    }
+    return null
+  }
+
 }

@@ -3,9 +3,9 @@
     <li class="li-progress btn li-1" [@li-1]="menu.menuState" (click)="menu.toggle()"> <span
         class="progress">Progress:</span>
       <div class="line-progress">
-        <div class="line-progress-active"></div>
+        <div class="line-progress-active" #progress></div>
         <div class="percent">
-          100%
+          {{userS.getProgressLearnewWords()}}%
         </div>
       </div>
     </li>

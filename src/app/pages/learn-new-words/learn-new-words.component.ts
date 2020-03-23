@@ -16,13 +16,12 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
 
   words: IWords[] = [];
   subscribeUser$: Subscription;
-  // userWords: IWords[];
   thisUser: IUser[];
   constructor(
     public db: FireService,
     private cardS: CardService,
     public userS: UsersService,
-    public fs: AngularFirestore
+    public fs: AngularFirestore,
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +33,7 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
         };
       }).filter(item => item.nickName === this.userS.user.nickName && item.password === this.userS.user.password);
       // console.log('thisUser   => ', this.thisUser);
+      // this.userS.user = this.thisUser[0];
     });
 
   }
@@ -51,13 +51,17 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   }
 
   nextWord(): void {
-    this.userS.getNewDataAboutWordsInfo(this.thisUser[0], this.cardS.previousWord, this.thisUser[0].learnedWords);
+    this.userS.learnedWords = this.userS.user.learnedWords.length;
+    
+    this.userS.getNewDataAboutWordsInfo(this.userS.user, this.cardS.previousWord, this.userS.user.learnedWords);
     this.randomWord();
 
+    // console.log(this.userS);
+    
   }
 
   didNotRemeberWord(): void {
-    this.userS.getNewDataAboutWordsInfo(this.thisUser[0], this.cardS.previousWord, this.thisUser[0].notLarnedWords);
+    this.userS.getNewDataAboutWordsInfo(this.userS.user, this.cardS.previousWord, this.userS.user.notLarnedWords);
     this.randomWord();
   }
 }

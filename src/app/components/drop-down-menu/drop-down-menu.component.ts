@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate, group, query, animateChild } from '@angular/animations';
 import { DropDownMenuService } from 'src/app/shared/services/drop-down-menu.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-drop-down-menu',
@@ -93,13 +94,15 @@ import { DropDownMenuService } from 'src/app/shared/services/drop-down-menu.serv
 })
 export class DropDownMenuComponent implements OnInit {
   // menuState: string = 'start'
-
+  @ViewChild('progress', { static: true }) progress: ElementRef;
   constructor(
-    public menu: DropDownMenuService
+    public menu: DropDownMenuService,
+    public userS: UsersService,
+    public r: Renderer2
   ) { }
 
   ngOnInit(): void {
-
+    this.r.setStyle(this.progress.nativeElement, 'width', `${this.userS.getProgressLearnewWords()}%`)
   }
 
 }

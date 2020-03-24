@@ -5,7 +5,7 @@
       <div class="line-progress">
         <div class="line-progress-active" #progress></div>
         <div class="percent" [style.width]="percentWidth" #percent>
-          {{userS.getProgressLearnewWords() | number:'1.0-2'}} %
+          {{userS.getProgressLearnewWords() | number:'1.0-2'}}%    ({{this.userS.user.learnedWords.length}} / 3000)
         </div>
       </div>
     </li>

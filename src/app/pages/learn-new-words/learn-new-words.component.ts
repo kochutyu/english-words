@@ -25,21 +25,9 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscribeUser$ = this.db.getCollection('users').subscribe(actionArr => {
-      this.thisUser = actionArr.map(item => {
-        return {
-          ...item.payload.doc.data(),
-          id: item.payload.doc.id
-        };
-      }).filter(item => item.nickName === this.userS.user.nickName && item.password === this.userS.user.password);
-      // console.log('thisUser   => ', this.thisUser);
-      // this.userS.user = this.thisUser[0];
-    });
-
   }
 
   ngOnDestroy(): void {
-    this.subscribeUser$.unsubscribe()
   }
 
   randomWord(): IWords {
@@ -51,17 +39,22 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   }
 
   nextWord(): void {
-    this.userS.learnedWords = this.userS.user.learnedWords.length;
-    
-    this.userS.getNewDataAboutWordsInfo(this.userS.user, this.cardS.previousWord, this.userS.user.learnedWords);
+    const newWord: string[] = this.userS.user.learnedWords;
+    newWord.push(JSON.stringify(this.cardS.previousWord));
     this.randomWord();
 
-    // console.log(this.userS);
-    
+    this.fs.collection('users').doc(this.userS.user.id).update({
+      learnedWords: newWord
+    });
   }
 
   didNotRemeberWord(): void {
-    this.userS.getNewDataAboutWordsInfo(this.userS.user, this.cardS.previousWord, this.userS.user.notLarnedWords);
+    const newWord: string[] = this.userS.user.notLarnedWords;
+    newWord.push(JSON.stringify(this.cardS.previousWord));
     this.randomWord();
+
+    this.fs.collection('users').doc(this.userS.user.id).update({
+      notLarnedWords: newWord
+    });
   }
 }

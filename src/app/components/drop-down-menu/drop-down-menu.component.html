@@ -4,8 +4,8 @@
         class="progress">Progress:</span>
       <div class="line-progress">
         <div class="line-progress-active" #progress></div>
-        <div class="percent">
-          {{userS.getProgressLearnewWords()}}%
+        <div class="percent" [style.width]="percentWidth" #percent>
+          {{userS.getProgressLearnewWords() | number:'1.0-2'}} %
         </div>
       </div>
     </li>

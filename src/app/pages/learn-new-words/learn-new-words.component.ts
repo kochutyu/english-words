@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { IWords } from 'src/app/shared/model/words';
 import { Subscription, Observable } from 'rxjs';
 import { FireService } from 'src/app/shared/services/fire.service';
@@ -22,6 +22,7 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
     private cardS: CardService,
     public userS: UsersService,
     public fs: AngularFirestore,
+    private r: Renderer2
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +43,8 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
     const newWord: string[] = this.userS.user.learnedWords;
     newWord.push(JSON.stringify(this.cardS.previousWord));
     this.randomWord();
+
+    this.r.setStyle(this.userS.progress.nativeElement, 'width', `${this.userS.getProgressLearnewWords()}%`);
 
     this.fs.collection('users').doc(this.userS.user.id).update({
       learnedWords: newWord

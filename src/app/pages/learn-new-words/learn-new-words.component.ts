@@ -26,15 +26,20 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.cardS.allWords = false;
+    this.randomWord();
   }
 
   ngOnDestroy(): void {
+
   }
 
   randomWord(): IWords {
     if (sessionStorage.getItem('words')) {
       const words: IWords[] = JSON.parse(sessionStorage.getItem('words'));
-      const word: IWords = this.cardS.randomWord(words);
+      this.cardS.words = words;
+
+      const word: IWords = this.cardS.randomWord();
       return word;
     }
   }

@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   change(): void {
     if (sessionStorage.getItem('words')) {
       const words: IWords[] = JSON.parse(sessionStorage.getItem('words'))
-      this.cardS.randomWord(words);
+      this.cardS.randomWord();
     }
   }
 

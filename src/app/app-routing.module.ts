@@ -6,8 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { RegistrationFormComponent } from './components/modal/registration-form/registration-form.component';
 import { ModalService } from './shared/services/modal.service';
 import { LearnNewWordsComponent } from './pages/learn-new-words/learn-new-words.component';
-import { LearnedWordsComponent } from './pages/learned-words/learned-words.component';
 import { RepeatWordsComponent } from './pages/repeat-words/repeat-words.component';
+import { NotLearnedWordsComponent } from './pages/not-learned-words/not-learned-words.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,7 +19,7 @@ const routes: Routes = [
     ]
   },
   { path: 'learn-new-words', component: LearnNewWordsComponent },
-  { path: 'learned-words', component: LearnedWordsComponent },
+  { path: 'not-learned-words', component: NotLearnedWordsComponent },
   { path: 'repeat-words', component: RepeatWordsComponent },
   { path: '**', redirectTo: '/home' }
 ];

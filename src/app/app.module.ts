@@ -20,7 +20,6 @@ import { CardComponent } from './components/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropDownMenuComponent } from './components/drop-down-menu/drop-down-menu.component';
 import { LearnNewWordsComponent } from './pages/learn-new-words/learn-new-words.component';
-import { LearnedWordsComponent } from './pages/learned-words/learned-words.component';
 import { RepeatWordsComponent } from './pages/repeat-words/repeat-words.component';
 
 @NgModule({
@@ -34,7 +33,6 @@ import { RepeatWordsComponent } from './pages/repeat-words/repeat-words.componen
     CardComponent,
     DropDownMenuComponent,
     LearnNewWordsComponent,
-    LearnedWordsComponent,
     RepeatWordsComponent,
   ],
   imports: [

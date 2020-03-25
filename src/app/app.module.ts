@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropDownMenuComponent } from './components/drop-down-menu/drop-down-menu.component';
 import { LearnNewWordsComponent } from './pages/learn-new-words/learn-new-words.component';
 import { RepeatWordsComponent } from './pages/repeat-words/repeat-words.component';
+import { NotLearnedWordsComponent } from './pages/not-learned-words/not-learned-words.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RepeatWordsComponent } from './pages/repeat-words/repeat-words.componen
     DropDownMenuComponent,
     LearnNewWordsComponent,
     RepeatWordsComponent,
+    NotLearnedWordsComponent
   ],
   imports: [
     BrowserModule,

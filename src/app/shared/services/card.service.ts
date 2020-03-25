@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { IWords } from '../model/words';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
+  allWords: boolean = true;
   words: IWords[] = [];
   selectWord: IWords;
 
@@ -12,14 +14,19 @@ export class CardService {
   word: string = '';
   transcription: string = '';
   translate: string = '';
-  constructor() {
+  constructor(
+    private usersS: UsersService
+  ) {
   }
 
   // previousWord(previousWord?: IWords): IWords { 
   //   return previousWord;
   // }
   previousWord: IWords;
-  randomWord(arr: IWords[]): IWords{
+  randomWord(): IWords {
+    const arr = this.words;
+    console.log('arr', arr);
+
     const rand = Math.floor(Math.random() * Math.max(arr.length));
     this.selectWord = arr[rand];
     this.id = this.selectWord.id;
@@ -35,4 +42,10 @@ export class CardService {
 
     return randomWord;
   }
+
+  randomNotLearnedWord(notLearnedWord: IWords[]): void {
+    console.log(this.randomWord());
+
+  }
+
 }

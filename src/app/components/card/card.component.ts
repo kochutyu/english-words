@@ -8,38 +8,31 @@ import { CardService } from 'src/app/shared/services/card.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit, AfterViewInit {
+export class CardComponent implements OnInit {
 
-  // words: IWords[] = [];
+
+  rotadeStatus: boolean = false;
 
   @Input() words: IWords[];
-
   @ViewChild('card', { static: false }) card: ElementRef;
 
   constructor(
     private r: Renderer2,
     public db: FireService,
-    public cs: CardService
+    public cardS: CardService
   ) { }
-  ngAfterViewInit(): void {
-    console.log(this.words);
 
-  }
-  arr: any[] = [];
-  selectWord: IWords;
-  word: string = '';
-  transcription: string = '';
-  translate: string = '';
-  rotadeStatus: boolean = false;
   ngOnInit(): void {
-    if (sessionStorage.getItem('words')) {
-      const words: IWords[] = JSON.parse(sessionStorage.getItem('words'));
-      this.cs.randomWord(words);
-    }
+    // if (this.cardS.allWords) {
+    //   if (sessionStorage.getItem('words')) {
+    //     this.words = JSON.parse(sessionStorage.getItem('words'));
+    //     this.cardS.words = this.words;
+    //     this.cardS.randomWord();
+    //   }
+    // }
   }
 
   rotade(): void {
-    // this.card.nativeElement.click()
     if (this.rotadeStatus) {
       this.r.setStyle(this.card.nativeElement, 'transform', `rotateY(0deg)`);
       this.rotadeStatus = false;

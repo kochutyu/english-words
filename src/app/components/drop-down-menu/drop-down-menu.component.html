@@ -1,5 +1,5 @@
-<div class="drop-container" [@menu-ul]="menu.menuState">
-  <ul class="drop-menu">
+<div class="drop-container">
+  <ul class="drop-menu" [@menu-ul]="menu.menuState">
     <li class="li-progress btn li-1" [@li-1]="menu.menuState" (click)="menu.toggle()"> <span
         class="progress">Progress:</span>
       <div class="line-progress" #progressLine>

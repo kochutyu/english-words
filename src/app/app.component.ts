@@ -19,7 +19,6 @@ export class AppComponent implements OnInit{
     if (sessionStorage.getItem('user')) {
       this.userS.user = JSON.parse(sessionStorage.getItem('user'));
       this.userS.loginStatus = true;
-      this.modal.hideModal.nativeElement.click();
       this.userS.wrongNickNameOrPassword = false;
       this.router.navigate(['/learn-new-words']);
     }

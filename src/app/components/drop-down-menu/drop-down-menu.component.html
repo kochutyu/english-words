@@ -14,6 +14,11 @@
                         routerLinkActive="active"
                         (click)="menu.toggle()"
                         >Learn New Words</li>
+    <li class="btn li-4" [@li-4]="menu.menuState"
+                         [routerLink]="['/repeat-words']"
+                         routerLinkActive="active"
+                         (click)="menu.toggle()"
+                         >Repeat All Words</li>
 
     <li class="btn li-3" [@li-3]="menu.menuState" 
                         [routerLink]="['/not-learned-words']" 
@@ -21,11 +26,6 @@
                         (click)="menu.toggle()"
                         >Repeat Not Learned Words</li>
 
-    <li class="btn li-4" [@li-4]="menu.menuState"
-                        [routerLink]="['/repeat-words']"
-                        routerLinkActive="active"
-                        (click)="menu.toggle()"
-                        >Repeat All Words</li>
     <li class="btn li-5" [@li-5]="menu.menuState" (click)="menu.logOut()"> <span class="log-out">Log Out</span> </li>
   </ul>
 </div>

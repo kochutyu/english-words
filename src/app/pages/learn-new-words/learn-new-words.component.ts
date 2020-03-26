@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { IWords } from 'src/app/shared/model/words';
 import { Subscription, Observable } from 'rxjs';
 import { FireService } from 'src/app/shared/services/fire.service';
@@ -29,6 +29,8 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   users: IUser[];
 
   allUsersWord: string[];
+
+  @ViewChild('learnWord', { static: false }) learnWord: ElementRef;
   ngOnInit(): void {
     this.cardS.allWords = false;
     this.randomWord();
@@ -80,6 +82,7 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   }
 
   nextWord(): void {
+    this.r.setAttribute(this.learnWord.nativeElement, 'disabled', 'disabled');
     this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `rgb(177, 238, 78)`);
 
     const newWord: string[] = this.userS.user.learnedWords;
@@ -96,7 +99,9 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `rgb(177, 238, 78)`);
     }, 300);
-
+    setTimeout(() => {
+      this.r.removeAttribute(this.learnWord.nativeElement, 'disabled');
+    }, 3000)
     this.randomWord();
   }
 

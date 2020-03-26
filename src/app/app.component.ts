@@ -21,6 +21,7 @@ export class AppComponent implements OnInit{
       this.userS.loginStatus = true;
       this.userS.wrongNickNameOrPassword = false;
       this.router.navigate(['/learn-new-words']);
+      this.userS.updateDataUserFromStorage();
     }
   }
 }

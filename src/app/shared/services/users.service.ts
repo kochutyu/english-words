@@ -31,4 +31,13 @@ export class UsersService {
     return null
   }
 
+  updateDataUserFromStorage(): void {
+    this.user = JSON.parse(sessionStorage.getItem('user'));
+    console.log('USER',this.user);
+
+    this.fs.collection('users').doc(this.user.id).update({ // update data
+      learnedWords: this.user.learnedWords,
+      notLarnedWords: this.user.notLarnedWords,
+    });
+  }
 }

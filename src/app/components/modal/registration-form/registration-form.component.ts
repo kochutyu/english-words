@@ -172,9 +172,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
      }
 
 
-
-
-
      enter(): void {
           this.userS.nickNameIsBusy = false;
 
@@ -190,13 +187,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
                     if (userStringify === sessionStorageUserStringify) {
                          this.userS.user = user[0];
                     } else {
-                         alert('update');
-                         this.userS.user = JSON.parse(sessionStorage.getItem('user'));
-
-                         this.fs.collection('users').doc(this.userS.user.id).update({ // update data
-                              learnedWords: this.userS.user.learnedWords,
-                              notLarnedWords: this.userS.user.notLarnedWords,
-                         });
+                         this.userS.updateDataUserFromStorage();
                     }
 
                } else {

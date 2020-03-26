@@ -75,6 +75,9 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
       // done filter words
       const filterWords: IWords[] = AllWordsSessionItemStringify.map(item => JSON.parse(item));
 
+      // save user insessionStorage
+      sessionStorage.setItem('user', JSON.stringify(this.userS.user));
+
       this.cardS.words = filterWords;
 
       const word: IWords = this.cardS.randomWord();
@@ -105,7 +108,7 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.r.removeAttribute(this.learnWord.nativeElement, 'disabled');
       this.r.removeAttribute(this.rememberWord.nativeElement, 'disabled');
-    }, 3000)
+    }, 200)
     this.randomWord();
   }
 
@@ -123,7 +126,7 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.r.removeAttribute(this.learnWord.nativeElement, 'disabled');
       this.r.removeAttribute(this.rememberWord.nativeElement, 'disabled');
-    }, 3000)
+    }, 200)
     this.randomWord();
   }
 }

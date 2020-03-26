@@ -36,6 +36,9 @@ export class NotLearnedWordsComponent implements OnInit {
       delete this.cardS.translate;
     }
 
+    // save user insessionStorage
+    sessionStorage.setItem('user', JSON.stringify(this.userS.user));
+
   }
 
   nextWord(): void {

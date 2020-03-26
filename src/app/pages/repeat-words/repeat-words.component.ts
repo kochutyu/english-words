@@ -35,6 +35,9 @@ export class RepeatWordsComponent implements OnInit {
       this.cardS.randomWord();
     }
 
+    // save user insessionStorage
+    sessionStorage.setItem('user', JSON.stringify(this.userS.user));
+
   }
 
   nextWord(): void {

@@ -32,7 +32,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
           public userS: UsersService,
           public validatorS: ValidatorsService,
           private db: FireService,
-          private router: Router
+          private router: Router,
      ) { }
 
 
@@ -182,15 +182,36 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
           const password = this.form.get('password').value;
           const user: IUser[] = this.users.filter(userItem => userItem.nickName === nickName && userItem.password === password);
 
-          if (user[0]) {
+          if (user[0]) { // if user exist
 
-               this.userS.user = user[0];
+               if (sessionStorage.getItem('user')) { // if user exist in sessionStorage
+                    const userStringify = JSON.stringify(user[0]);
+                    const sessionStorageUserStringify = sessionStorage.getItem('user');
+                    if (userStringify === sessionStorageUserStringify) {
+                         this.userS.user = user[0];
+                    } else {
+                         alert('update');
+                         this.userS.user = JSON.parse(sessionStorage.getItem('user'));
+
+                         this.fs.collection('users').doc(this.userS.user.id).update({ // update data
+                              learnedWords: this.userS.user.learnedWords,
+                              notLarnedWords: this.userS.user.notLarnedWords,
+                         });
+                    }
+
+               } else {
+                    this.userS.user = user[0];
+               }
+
+               // save user insessionStorage
+               sessionStorage.setItem('user', JSON.stringify(user[0]));
+
                this.userS.loginStatus = true;
                this.modal.hideModal.nativeElement.click();
                this.userS.wrongNickNameOrPassword = false;
                this.router.navigate(['/learn-new-words']);
                console.log(user[0]);
-               
+
           } else {
 
                this.userS.wrongNickNameOrPassword = true;

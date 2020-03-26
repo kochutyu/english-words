@@ -2,9 +2,9 @@
   <ul class="drop-menu">
     <li class="li-progress btn li-1" [@li-1]="menu.menuState" (click)="menu.toggle()"> <span
         class="progress">Progress:</span>
-      <div class="line-progress">
+      <div class="line-progress" #progressLine>
         <div class="line-progress-active" #progress></div>
-        <div class="percent" [style.width]="percentWidth" #percent>
+        <div class="percent" [style.width]="percentWidth">
           {{userS.getProgressLearnewWords() | number:'1.0-2'}}%    ({{this.userS.user.learnedWords.length}} / 3000)
         </div>
       </div>
@@ -19,13 +19,13 @@
                         [routerLink]="['/not-learned-words']" 
                         routerLinkActive="active"
                         (click)="menu.toggle()"
-                        >Not Learned Words</li>
+                        >Repeat Not Learned Words</li>
 
     <li class="btn li-4" [@li-4]="menu.menuState"
                         [routerLink]="['/repeat-words']"
                         routerLinkActive="active"
                         (click)="menu.toggle()"
-                        >Repeat Words</li>
+                        >Repeat All Words</li>
     <li class="btn li-5" [@li-5]="menu.menuState" (click)="menu.logOut()"> <span class="log-out">Log Out</span> </li>
   </ul>
 </div>

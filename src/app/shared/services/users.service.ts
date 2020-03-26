@@ -13,6 +13,7 @@ export class UsersService {
   user: IUser;
   users: IUser[] = [];
   progress: ElementRef;
+  progressLine: ElementRef;
 
   learnedWords: number;
   constructor(

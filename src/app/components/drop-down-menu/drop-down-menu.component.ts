@@ -95,7 +95,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 export class DropDownMenuComponent implements OnInit {
   percentWidth: string;
   @ViewChild('progress', { static: true }) progress: ElementRef;
-  @ViewChild('percent', { static: true }) percent: ElementRef;
+  @ViewChild('progressLine', { static: true }) progressLine: ElementRef;
 
   constructor(
     public menu: DropDownMenuService,
@@ -106,6 +106,7 @@ export class DropDownMenuComponent implements OnInit {
   ngOnInit(): void {
     this.r.setStyle(this.progress.nativeElement, 'width', `${this.userS.getProgressLearnewWords()}%`)
     this.userS.progress = this.progress;
+    this.userS.progressLine = this.progressLine;
   }
 
 }

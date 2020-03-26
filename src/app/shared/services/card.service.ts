@@ -19,15 +19,10 @@ export class CardService {
   ) {
   }
 
-  // previousWord(previousWord?: IWords): IWords { 
-  //   return previousWord;
-  // }
+
   previousWord: IWords;
   randomWord(): IWords {
     const arr = this.words;
-    console.log('arr', arr);
-    console.log('this.userS.user', this.userS.user);
-
     const rand = Math.floor(Math.random() * Math.max(arr.length));
 
     this.selectWord = arr[rand];
@@ -35,7 +30,6 @@ export class CardService {
     this.word = this.selectWord.word;
     this.transcription = this.selectWord.transcription;
     this.translate = this.selectWord.translate;
-    // console.log(this.selectWord);
     const randomWord = new IWords(this.id, this.word, this.transcription, this.translate);
 
     if (JSON.stringify(this.previousWord) !== JSON.stringify(randomWord)) {
@@ -43,11 +37,6 @@ export class CardService {
     }
 
     return randomWord;
-  }
-
-  randomNotLearnedWord(notLearnedWord: IWords[]): void {
-    console.log(this.randomWord());
-
   }
 
 }

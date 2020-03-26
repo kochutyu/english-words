@@ -35,19 +35,6 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.cardS.allWords = false;
     this.randomWord();
-
-
-    // this.user$ = this.db.getCollection('users').subscribe(actionArr => {
-    //   this.users = actionArr.map(item => {
-    //     return {
-    //       ...item.payload.doc.data(),
-    //       id: item.payload.doc.id
-    //     };
-    //   }).filter(item => item.id === this.userS.user.id);
-    //   this.userS.user = this.users[0]
-    //   console.log('USER => ', this.users[0]);
-    // });
-
   }
 
   ngOnDestroy(): void {
@@ -55,7 +42,6 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   }
 
   randomWord(): IWords {
-    // console.log('this.allUsersWord', this.allUsersWord);
 
     if (sessionStorage.getItem('words')) {
       const sessionStorageWords: string = sessionStorage.getItem('words');

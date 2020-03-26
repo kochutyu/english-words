@@ -52,14 +52,6 @@ export class AllWordsService {
           id: words.payload.doc.id
         };
       });
-      console.log(this.aboutSkillsArr);
-      // this.fs.doc(this.aboutSkillsArr[0].delete()).delete()
-      // this.fs.doc('V').delete()
-      // this.aboutSkillsArr[0].delete()
-      // this.deleteDocID('words', 'english')
-      // console.log(this.aboutSkillsArr);
-      // this.deleteDocID()
-
     });
   }
 

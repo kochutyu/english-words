@@ -28,7 +28,6 @@ export class RepeatWordsComponent implements OnInit {
     const learnedWords: IWords[] = this.userS.user.learnedWords.map(item => JSON.parse(item));
     const notLarnedWords: IWords[] = this.userS.user.notLarnedWords.map(item => JSON.parse(item));
     this.cardS.words = learnedWords.concat(notLarnedWords);
-    console.log(this.cardS.words);
 
 
     if (this.cardS.words.length > 0) {
@@ -41,7 +40,6 @@ export class RepeatWordsComponent implements OnInit {
   }
 
   nextWord(): void {
-    console.log(this.cardS.previousWord);
     this.randomWord();
 
   }
@@ -49,18 +47,12 @@ export class RepeatWordsComponent implements OnInit {
   didNotRemeberWord(): void {
     const previousWord: IWords = this.cardS.previousWord;
     const findWordIndex: number = this.cardS.words.findIndex(item => item.id === previousWord.id);
-    console.log('findWordIndex:',findWordIndex);
     const learnedWordsLength: number = this.userS.user.learnedWords.length;
-    console.log('learnedWordsLength: ', learnedWordsLength);
     const notLarnedWordsLength: number = this.userS.user.notLarnedWords.length;
-    console.log('notLarnedWordsLength: ', notLarnedWordsLength);
 
 
-    console.log('----------------------------');
     if (findWordIndex < learnedWordsLength) {
       
-      console.log('learnedWordsLength');
-
       // remove word from learnedWords
       this.userS.user.learnedWords = this.userS.user.learnedWords.filter(item => item !== JSON.stringify(previousWord));
       const learnedWords = this.userS.user.learnedWords;
@@ -77,11 +69,8 @@ export class RepeatWordsComponent implements OnInit {
         notLarnedWords
       });
 
-    } else {
-      console.log('notLarnedWordsLength');
-      // this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `green`);
-
     }
+    
     setTimeout(() => {
       this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `rgb(177, 238, 78)`);
     }, 300);

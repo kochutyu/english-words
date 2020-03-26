@@ -25,8 +25,6 @@ export class MyValidators {
     static checkFirstSymbol(control: FormControl): { [key: string]: any } {
         let firstSymbol: RegExp = new RegExp('^[A-ZА-ЯА-ЯЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ]{1}');
         if (!firstSymbol.test(control.value)) {
-            // console.log(this.users);
-            
             return {
                 'checkFirstSymbol': true
             }
@@ -49,7 +47,6 @@ export class MyValidators {
         
         /** Общая проверка */
         const passwordValid = hasNumber && hasCapitalLetter && hasLowercaseLetter && isLengthValid;
-        console.log('kik');
         
         if (!passwordValid) {
             return { invalidPassword: 'Пароль не прошел валидацию' };

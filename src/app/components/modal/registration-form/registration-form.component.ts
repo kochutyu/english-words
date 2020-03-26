@@ -74,7 +74,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
                          id: item.payload.doc.id
                     };
                });
-               console.log('users => ', this.users);
           });
      }
 
@@ -93,7 +92,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
                     map(item => JSON.parse(item));
                sessionStorage.setItem('words', JSON.stringify(this.words));
                this.words$.unsubscribe()
-               console.log(this.words);
           })
      }
 
@@ -201,7 +199,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
                this.modal.hideModal.nativeElement.click();
                this.userS.wrongNickNameOrPassword = false;
                this.router.navigate(['/learn-new-words']);
-               console.log(user[0]);
 
           } else {
 
@@ -215,11 +212,9 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
 
      submit(): void {
           if (this.modal.registrationStatus) {
-               console.log(this.modal.registrationStatus);
                this.register();
           } else {
 
-               console.log(this.modal.registrationStatus);
                this.enter();
 
           }

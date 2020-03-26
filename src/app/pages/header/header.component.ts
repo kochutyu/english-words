@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
           id: words.payload.doc.id
         };
       });
-      console.log('this => ', this.arr[0].words.map(i => JSON.parse(i)));
       
     })
   }
@@ -46,7 +45,6 @@ export class HeaderComponent implements OnInit {
   textarea: string = '';
   alert(): void {
     this.aws.textarea = this.textarea;
-    console.log(this.arr);
     
     // this.aws.addWords();
     
@@ -56,7 +54,6 @@ export class HeaderComponent implements OnInit {
     // this.modal.registrationFormStatus = true;
     this.modal.modal = true;
     this.modal.registrationFormStatus = true;
-    console.log('plll');
     
 
   }

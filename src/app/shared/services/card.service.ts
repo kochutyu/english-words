@@ -15,7 +15,7 @@ export class CardService {
   transcription: string = '';
   translate: string = '';
   constructor(
-    private usersS: UsersService
+    private userS: UsersService
   ) {
   }
 
@@ -26,8 +26,10 @@ export class CardService {
   randomWord(): IWords {
     const arr = this.words;
     console.log('arr', arr);
+    console.log('this.userS.user', this.userS.user);
 
     const rand = Math.floor(Math.random() * Math.max(arr.length));
+
     this.selectWord = arr[rand];
     this.id = this.selectWord.id;
     this.word = this.selectWord.word;

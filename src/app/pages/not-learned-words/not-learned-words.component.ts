@@ -31,9 +31,9 @@ export class NotLearnedWordsComponent implements OnInit {
     } else {
 
       // if haven`t words in notLarnedWords
-      delete this.cardS.word
-      delete this.cardS.transcription
-      delete this.cardS.translate
+      delete this.cardS.word;
+      this.cardS.transcription = "The words are over";
+      delete this.cardS.translate;
     }
 
   }

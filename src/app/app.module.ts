@@ -22,6 +22,9 @@ import { DropDownMenuComponent } from './components/drop-down-menu/drop-down-men
 import { LearnNewWordsComponent } from './pages/learn-new-words/learn-new-words.component';
 import { RepeatWordsComponent } from './pages/repeat-words/repeat-words.component';
 import { NotLearnedWordsComponent } from './pages/not-learned-words/not-learned-words.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
+import { ngxUiLoaderConfig } from './preloader.config';
 
 @NgModule({
   declarations: [
@@ -47,11 +50,13 @@ import { NotLearnedWordsComponent } from './pages/not-learned-words/not-learned-
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderRouterModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 

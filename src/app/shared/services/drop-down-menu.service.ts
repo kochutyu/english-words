@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ElementRef, Renderer2 } from '@angular/core';
 import { UsersService } from './users.service';
 import { Router } from '@angular/router';
 
@@ -9,10 +9,11 @@ export class DropDownMenuService {
   openStatusMenu: boolean = false;
   menuState: string = 'end'
   rotadeSettings: string = 'click-active'
+  dropDown: ElementRef
 
   constructor(
     private user: UsersService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -25,12 +26,5 @@ export class DropDownMenuService {
     this.onRotadeSettings();
     this.openStatusMenu = !this.openStatusMenu;
     this.menuState = this.menuState === 'end' ? 'start' : 'end';
-  }
-
-  logOut(): void {
-    delete this.user.user;
-    this.user.loginStatus = false;
-    this.router.navigate(['/home']);
-    this.toggle();
   }
 }

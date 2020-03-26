@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/co
 import { trigger, state, style, transition, animate, group, query, animateChild } from '@angular/animations';
 import { DropDownMenuService } from 'src/app/shared/services/drop-down-menu.service';
 import { UsersService } from 'src/app/shared/services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drop-down-menu',
@@ -96,17 +97,32 @@ export class DropDownMenuComponent implements OnInit {
   percentWidth: string;
   @ViewChild('progress', { static: true }) progress: ElementRef;
   @ViewChild('progressLine', { static: true }) progressLine: ElementRef;
+  @ViewChild('dropDown', { static: true }) dropDown: ElementRef;
 
   constructor(
     public menu: DropDownMenuService,
     public userS: UsersService,
-    public r: Renderer2
+    public r: Renderer2,
+    private router: Router
   ) { }
   
   ngOnInit(): void {
     this.r.setStyle(this.progress.nativeElement, 'width', `${this.userS.getProgressLearnewWords()}%`)
     this.userS.progress = this.progress;
     this.userS.progressLine = this.progressLine;
+  }
+
+  logOut(): void {
+    delete this.userS.user;
+    this.userS.loginStatus = false;
+    this.router.navigate(['/home']);
+    this.menu.toggle();
+    this.hideMunuStart();
+  }
+
+  hideMunuStart(): void {
+    this.menu.menuState = 'end';
+    this.r.setStyle(this.dropDown.nativeElement, 'height', '50px');
   }
 
 }

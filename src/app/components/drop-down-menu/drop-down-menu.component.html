@@ -1,5 +1,5 @@
 <div class="drop-container">
-  <ul class="drop-menu" [@menu-ul]="menu.menuState">
+  <ul class="drop-menu" [@menu-ul]="menu.menuState" #dropDown>
     <li class="li-progress btn li-1" [@li-1]="menu.menuState" (click)="menu.toggle()"> <span
         class="progress">Progress:</span>
       <div class="line-progress" #progressLine>
@@ -26,6 +26,6 @@
                         (click)="menu.toggle()"
                         >Repeat Not Learned Words</li>
 
-    <li class="btn li-5" [@li-5]="menu.menuState" (click)="menu.logOut()"> <span class="log-out">Log Out</span> </li>
+    <li class="btn li-5" [@li-5]="menu.menuState" (click)="logOut()"> <span class="log-out">Log Out</span> </li>
   </ul>
 </div>

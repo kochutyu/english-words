@@ -25,9 +25,26 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
     private r: Renderer2
   ) { }
 
+  user$: Subscription;
+  users: IUser[];
+
+  allUsersWord: string[];
   ngOnInit(): void {
     this.cardS.allWords = false;
     this.randomWord();
+
+
+    // this.user$ = this.db.getCollection('users').subscribe(actionArr => {
+    //   this.users = actionArr.map(item => {
+    //     return {
+    //       ...item.payload.doc.data(),
+    //       id: item.payload.doc.id
+    //     };
+    //   }).filter(item => item.id === this.userS.user.id);
+    //   this.userS.user = this.users[0]
+    //   console.log('USER => ', this.users[0]);
+    // });
+
   }
 
   ngOnDestroy(): void {
@@ -35,9 +52,27 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   }
 
   randomWord(): IWords {
+    // console.log('this.allUsersWord', this.allUsersWord);
+
     if (sessionStorage.getItem('words')) {
-      const words: IWords[] = JSON.parse(sessionStorage.getItem('words'));
-      this.cardS.words = words;
+      const sessionStorageWords: string = sessionStorage.getItem('words');
+
+      // get user all words
+      this.allUsersWord = this.userS.user.learnedWords.concat(this.userS.user.notLarnedWords);
+
+      const AllWordsSession: IWords[] = JSON.parse(sessionStorageWords);
+      let AllWordsSessionItemStringify = AllWordsSession.map(item => JSON.stringify(item));
+      const allUsersWord = this.allUsersWord;
+
+      // filter out words for dissimilar
+      allUsersWord.forEach(userWord => {
+        AllWordsSessionItemStringify = AllWordsSessionItemStringify.filter(fordFromSessionStorage => fordFromSessionStorage !== userWord);
+      });
+
+      // done filter words
+      const filterWords: IWords[] = AllWordsSessionItemStringify.map(item => JSON.parse(item));
+
+      this.cardS.words = filterWords;
 
       const word: IWords = this.cardS.randomWord();
       return word;
@@ -45,24 +80,33 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   }
 
   nextWord(): void {
+    this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `rgb(177, 238, 78)`);
+
     const newWord: string[] = this.userS.user.learnedWords;
     newWord.push(JSON.stringify(this.cardS.previousWord));
-    this.randomWord();
 
     this.r.setStyle(this.userS.progress.nativeElement, 'width', `${this.userS.getProgressLearnewWords()}%`);
+
+    this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `rgb(125, 177, 40)`);
 
     this.fs.collection('users').doc(this.userS.user.id).update({
       learnedWords: newWord
     });
+
+    setTimeout(() => {
+      this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `rgb(177, 238, 78)`);
+    }, 300);
+
+    this.randomWord();
   }
 
   didNotRemeberWord(): void {
     const newWord: string[] = this.userS.user.notLarnedWords;
     newWord.push(JSON.stringify(this.cardS.previousWord));
-    this.randomWord();
 
     this.fs.collection('users').doc(this.userS.user.id).update({
       notLarnedWords: newWord
     });
+    this.randomWord();
   }
 }

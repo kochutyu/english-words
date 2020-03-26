@@ -31,6 +31,7 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
   allUsersWord: string[];
 
   @ViewChild('learnWord', { static: false }) learnWord: ElementRef;
+  @ViewChild('rememberWord', { static: false }) rememberWord: ElementRef;
   ngOnInit(): void {
     this.cardS.allWords = false;
     this.randomWord();
@@ -83,6 +84,8 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
 
   nextWord(): void {
     this.r.setAttribute(this.learnWord.nativeElement, 'disabled', 'disabled');
+    this.r.setAttribute(this.rememberWord.nativeElement, 'disabled', 'disabled');
+
     this.r.setStyle(this.userS.progress.nativeElement, 'backgroundColor', `rgb(177, 238, 78)`);
 
     const newWord: string[] = this.userS.user.learnedWords;
@@ -101,17 +104,26 @@ export class LearnNewWordsComponent implements OnInit, OnDestroy {
     }, 300);
     setTimeout(() => {
       this.r.removeAttribute(this.learnWord.nativeElement, 'disabled');
+      this.r.removeAttribute(this.rememberWord.nativeElement, 'disabled');
     }, 3000)
     this.randomWord();
   }
 
   didNotRemeberWord(): void {
+    this.r.setAttribute(this.learnWord.nativeElement, 'disabled', 'disabled');
+    this.r.setAttribute(this.rememberWord.nativeElement, 'disabled', 'disabled');
+
     const newWord: string[] = this.userS.user.notLarnedWords;
     newWord.push(JSON.stringify(this.cardS.previousWord));
 
     this.fs.collection('users').doc(this.userS.user.id).update({
       notLarnedWords: newWord
     });
+
+    setTimeout(() => {
+      this.r.removeAttribute(this.learnWord.nativeElement, 'disabled');
+      this.r.removeAttribute(this.rememberWord.nativeElement, 'disabled');
+    }, 3000)
     this.randomWord();
   }
 }

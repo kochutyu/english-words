@@ -302,6 +302,9 @@ firebase/firestore
 
 firebase/storage
 
+ngx-ui-loader
+MIT
+
 regenerator-runtime
 MIT
 MIT License

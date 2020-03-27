@@ -116,6 +116,7 @@ export class DropDownMenuComponent implements OnInit {
     delete this.userS.user;
     this.userS.loginStatus = false;
     this.router.navigate(['/home']);
+    sessionStorage.setItem('logIn', JSON.stringify(false));
     this.menu.toggle();
     this.hideMunuStart();
   }

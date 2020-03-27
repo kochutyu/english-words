@@ -21,17 +21,18 @@ export class AppComponent implements OnInit {
     private ngxLoader: NgxUiLoaderService
   ) { }
   ngOnInit(): void {
-    if (sessionStorage.getItem('user')) {
-      this.userS.user = JSON.parse(sessionStorage.getItem('user'));
-      this.userS.loginStatus = true;
-      this.userS.wrongNickNameOrPassword = false;
-      this.router.navigate(['/learn-new-words']);
-      this.userS.updateDataUserFromStorage();
-    }
+    const checkUserLogOut: boolean = JSON.parse(sessionStorage.getItem('logIn'));
 
-    this.ngxLoader.start(); // start master loader
-    // this.http.request().
-    this.ngxLoader.stop();
+    console.log(checkUserLogOut);
+    if (checkUserLogOut) {
+      if (sessionStorage.getItem('user')) {
+        this.userS.user = JSON.parse(sessionStorage.getItem('user'));
+        this.userS.loginStatus = true;
+        this.userS.wrongNickNameOrPassword = false;
+        this.router.navigate(['/learn-new-words']);
+        this.userS.updateDataUserFromStorage();
+      }
+    }
 
   }
 }
